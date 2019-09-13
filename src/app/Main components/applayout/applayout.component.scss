@@ -1,0 +1,29 @@
+.wrapper {
+    width: 100%;
+    height: 100%;
+
+    .main {
+        width: 100%;
+        min-height: 100vh;
+        background: url("../../../assets/images/main-background.jpg");
+        background-repeat: repeat;
+        background-size: cover;
+        background-position: center bottom;
+    }
+}
+
+
+@media only screen and (max-width: 960px) {
+    .nav-sec {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 760px) {
+    .main {
+        
+        .nav-sec {
+            display: block;
+        }
+    }
+}

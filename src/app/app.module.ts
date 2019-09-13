@@ -1,11 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { AstronautsModule } from "./modules/astronauts/astronauts.module";
+import { HttpClientModule } from "@angular/common/http";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ApplayoutComponent } from './components/applayout/applayout.component';
-import { HeaderComponent } from './components/header/header.component';
-import { MenuComponent } from './components/menu/menu.component';
+import { ApplayoutComponent } from './Main components/applayout/applayout.component';
+import { HeaderComponent } from './Main components/header/header.component';
+import { MenuComponent } from './Main components/menu/menu.component';
+import { HomeComponent } from './Main components/home/home.component';
+import { FooterComponent } from './Main components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -13,10 +17,14 @@ import { MenuComponent } from './components/menu/menu.component';
     ApplayoutComponent,
     HeaderComponent,
     MenuComponent,
+    HomeComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    AstronautsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

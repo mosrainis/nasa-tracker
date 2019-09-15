@@ -3,12 +3,10 @@
     height: 100%;
 
     .main {
-        width: 100%;
+        width: 88%;
+        max-width: 1900px;
+        margin: auto;
         min-height: 100vh;
-        background: url("../../../assets/images/main-background.jpg");
-        background-repeat: repeat;
-        background-size: cover;
-        background-position: center bottom;
     }
 }
 

@@ -1,39 +1,59 @@
 .item-co {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
     width: 87%;
     margin: auto;
     padding-top: 30px;
 
     .item {
         transition: all 300ms;
-        margin: 8px;
-        flex: 1 0 30%;
-        height: 300px;
+        margin:  20px 8px;
+        flex: 0 0 30%;
+        min-height: 370px; //DELETE THIS AFTER DEBUGING ....................................
         border-radius: 8px;
-        border: 1px solid #fff;
-        background-image: linear-gradient(to right, rgba(255, 0, 0, 0) , rgba(66, 66, 66, 0.705));
+        // background-image: linear-gradient( to left, rgb(0, 0, 0) , rgb(14, 9, 78));
+        background-color: #303852;
+        cursor: pointer;
 
-        .item-title {
-            text-align: center;
-            margin: 15px;
-        }
-        
-        .content-co {
-            display: flex;
+        .image-co {
+            overflow: hidden;
 
             .content-image {
-                max-height: 250px;
+                border-top-right-radius: 8px;
+                border-top-left-radius: 8px;
+                width: 100%;
+                height: 200px;
+                background: url("../../../assets/images/main-background.jpg");
+                background-size: cover;
+                transition: all 300ms;
+            }
+        }
+
+
+        .content-info {
+            width: 100%;
+            min-height: 170px;
+            box-sizing: border-box;
+            
+            .content-title {
+                margin: 10px 15px;
             }
 
             .content-des {
-                width: 50%;
-                text-align: justify;
                 padding: 20px;
-                font-size: 22px;
-                
+                text-align: justify;
             }
         }
+
+    }.item:hover .content-image {
+        transform: scale(1.05);
+    }.item:hover .content-title, .item:hover .content-des {
+        color: #79e6e4;
+        padding: 0px 15px;
+    }
+    .item:hover {
+        background: #373f5c;
+        box-shadow: 0px 15px 10px -15px #53afad;
     }
 }

@@ -3,8 +3,10 @@
     justify-content: space-around;
     align-items: center;
     width: 100%;
-    background: #1a1a1ade;
+    background: #438685;
     padding: 8px 0px;
+    border-bottom: 4px solid #0b132b;
+
 
     .f-item {
 
@@ -33,7 +35,7 @@
     }
 }
 .header-sec:hover {
-    background: #1a1a1a;
+    border-bottom: 4px solid #235a59;
 }
 
 .h-link-co {
@@ -53,8 +55,4 @@
 
 .h-link-co:hover {
     background: rgb(93, 93, 93);
-}
-
-@keyframes color {
-    100% {background: red;}
 }

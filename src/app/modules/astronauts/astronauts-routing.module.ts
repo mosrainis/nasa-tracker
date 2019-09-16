@@ -6,7 +6,8 @@ import { AstroComponent } from './components/astro/astro.component';
 const routes: Routes = [
   {
     path: '',
-    component: AstroComponent
+    component: AstroComponent,
+    data: { animation: 'isLeft'}
   }
 ];
 

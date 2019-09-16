@@ -8,16 +8,12 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class HomeComponent implements OnInit {
 
-  list = [
-    {asdf:'asd'},
-    {asdf:'asd'},
-    {asdf:'asd'},
-    {asdf:'asd'},
-    {asdf:'asd'},
-    {asdf:'asd'},
-    {asdf:'asd'},
-    {asdf:'asd'},
-    {asdf:'asd'}
+  homeContent = [
+    {
+      title: 'Astronauts currently in space',
+      des: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
+      routeAddress: '/astronauts'
+    }
   ]
   selected: boolean = false
 

@@ -1,17 +1,18 @@
 <div class="item-co">
     <div class="item">
         <div class="content-co">
-            <div class="image-co">
-                <div class="content-image"></div>
-            </div>
-            <div class="content-info">
-                <h2 class="content-title">{{'Astronauts currently in space' | titlecase}}</h2>
-                <p class="content-des">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
-                </p>
-            </div>
+            <ng-container *ngFor="let item of homeContent">
+                <a class="content-link" [routerLink]="[item.routeAddress]">
+                    <div class="image-co">
+                        <div class="content-image"></div>
+                    </div>
+                    <div class="content-info">
+                        <h2 class="content-title">{{ item.title | titlecase}}</h2>
+                        <p class="content-des">{{item.des}}</p>
+                    </div>
+                </a>
+            </ng-container>
         </div>
-        
     </div>
     <div class="item"></div>
     <div class="item"></div>

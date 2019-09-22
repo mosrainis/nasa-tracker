@@ -1,1 +1,11 @@
-<p>astro works!</p>
+<div class="container">
+    <div class="head-content">
+        <p>There are {{astros.number}} people in space right now.</p>
+    </div>
+    <div class="items-sec">
+        <div class="item-container" *ngFor="let item of astros.people">
+            <h3>{{item.name}}</h3>
+            <p>Currently in {{item.craft}}</p>
+        </div>
+    </div>
+</div>

@@ -1,7 +1,21 @@
 <div class="wrapper">
     <app-header></app-header>
-    <main class="main-sec" [@routeAnimations]="prepareRoute(outlet)">
-        <router-outlet #outlet="outlet"></router-outlet>
-    </main>
+    <div class="middle-sec">
+        <div class="nav-co">
+            <nav class="desktop-nav">
+                <ul>
+                    <li>this</li>
+                    <li>that</li>
+                    <li>those</li>
+                </ul>
+            </nav>
+        </div>
+        <main class="main-sec" [@routeAnimations]="prepareRoute(outlet)">
+            <div class="btn-co">
+                <button (click)="desktopMenu = true" class="menu-btn">Menu</button>
+            </div>
+            <router-outlet #outlet="outlet"></router-outlet>
+        </main>
+    </div>
     <app-footer></app-footer>
 </div>

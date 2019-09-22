@@ -12,6 +12,10 @@ export class ApiService {
   ) { }
 
   getAstronauts(): Observable<any> {
-    return this.http.get<any>(`https://api.nasa.gov/neo/rest/v1/feed/today?api_key=DEMO_KEY`)
+    return this.http.get<any>(`http://api.open-notify.org/astros.json`)
+  }
+
+  getWikiData(): Observable<any> {
+    return this.http.get<any>(`https://en.wikipedia.org/w/api.php?action=opensearch&origin=*&search=nepal`)
   }
 }

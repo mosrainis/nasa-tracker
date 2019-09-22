@@ -1,0 +1,35 @@
+.head-content {
+    width: 80%;
+    margin: auto;
+    background: #438685;
+    color: #fff;
+    padding: 20px;
+    font-size: 25px;
+    border-radius: 8px;
+    text-align: center;
+
+}
+
+.items-sec {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 30px 0px;
+
+    .item-container {
+        width: 30%;
+        background: #303852;
+        border-radius: 8px;
+        text-align: center;
+        padding: 20px;
+        margin: 10px;
+        cursor: pointer;
+        
+        * {
+            margin: 8px;
+        }
+        
+    }.item-container:hover {
+        background: #438685;
+    }
+}

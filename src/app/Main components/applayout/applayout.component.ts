@@ -12,6 +12,8 @@ import { fader } from "../../route-animation";
 })
 export class ApplayoutComponent implements OnInit {
 
+  desktopMenu: boolean = false
+
   constructor() { }
 
   ngOnInit() {

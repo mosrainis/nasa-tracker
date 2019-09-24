@@ -23,13 +23,137 @@
         text-align: center;
         padding: 20px;
         margin: 10px;
-        cursor: pointer;
-        
-        * {
-            margin: 8px;
+        position: relative;
+        overflow: hidden;
+
+        p, h3 {
+            margin: 15px;
+        }
+
+        .item-btn {
+            padding: 10px;
+            margin: 15px auto;
+            color: #fff;
+            background: #455177;
+            border-radius: 8px;
+            width: 100%;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }.item-btn:hover {
+            background: #3e414d !important;
+        }
+
+        .wiki-co {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            background: #303852;
+            margin: auto;
+            transition: all 300ms;
+
+            .result-co {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                line-height: 50px;
+
+                .item-link {
+                    text-decoration: none;
+                    margin-top: 20px;
+                    padding: 8px;
+                    font-size: 20px;
+                    border-radius: 8px;
+                    background: #1f2433;
+                }.item-link:hover {
+                    background: #438685;
+                }
+                
+                .alart-m {
+                    margin-top: 20px;
+                    font-size: 15px;
+
+                    .inline-link {
+                        text-decoration: none;
+                        color: #32f1ee;
+                        padding: 5px;
+                        border-radius: 8px;
+                    }.inline-link:hover {
+                        color: #fff;
+                        background: #438685;
+                    }
+                }
+            }
         }
         
     }.item-container:hover {
         background: #438685;
     }
+
+    .item-container:hover .item-btn {
+        background: #303852;
+    }
+}
+
+.loading-icon {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.hide-loading {
+    top: 150%;
+}
+
+.show-loading {
+    top: 55%;
+}
+
+// --------- Loading icon ---------
+// Src: https://codepen.io/majci23/pen/NqdXvy
+// Has changed a bit
+
+$color-loader: #e9e9e9;
+
+.loader {
+  width: 250px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: helvetica, arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: $color-loader;
+  letter-spacing: 0.2em;
+  
+  &::before, &::after {
+    content: "";
+    display: block;
+    width: 15px;
+    height: 15px;
+    background: $color-loader;
+    position: absolute;
+    animation: load .7s infinite alternate ease-in-out;
+  }
+  
+  &::before {
+    top: 0;
+  }
+  
+  &::after {
+    bottom: 0;
+  }
+}
+
+@keyframes load {
+  0% { left: 0; height: 30px; width: 15px }
+  50% { height: 8px; width: 40px }
+  100% { left: 235px; height: 30px; width: 15px}
 }

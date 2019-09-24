@@ -9,6 +9,7 @@ export interface Astros {
 export interface Person {
     name:  string;
     craft: string;
+    displayWikiSec?: boolean
 }
 
 //-------------------------------------------------

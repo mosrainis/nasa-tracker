@@ -1,11 +1,26 @@
 <div class="container">
-    <div class="head-content">
+    <div class="loading-icon" *ngIf="!astros.people">
+        <div class="loader">Loading...</div> <!-- https://codepen.io/majci23/pen/NqdXvy -->
+    </div>
+    <div class="head-content" *ngIf="astros.people">
         <p>There are {{astros.number}} people in space right now.</p>
     </div>
     <div class="items-sec">
-        <div class="item-container" *ngFor="let item of astros.people">
-            <h3>{{item.name}}</h3>
-            <p>Currently in {{item.craft}}</p>
-        </div>
+        <ng-container *ngFor="let item of astros.people; let i = index">
+            <div class="item-container" (mouseleave)="closeWikiSec(i)">
+                <h3>{{item.name}}</h3>
+                <p>Currently in {{item.craft}}</p>
+                <button class="item-btn" (click)="wikiInfo(item.name, i)">Search wikipedia about {{item.name}}</button>
+                <div class="wiki-co" [ngClass]="astros['people'][i].displayWikiSec ? 'show-loading' : 'hide-loading'">
+                    <div class="loading-icon" *ngIf="displayLoadingIcon">
+                        <div class="loader">Loading...</div> <!-- https://codepen.io/majci23/pen/NqdXvy -->
+                    </div>
+                    <div class="result-co" *ngIf="!displayLoadingIcon">
+                        <a class="item-link" *ngIf="astroURL" [href]="astroURL" target="_blank">Click to read more</a>
+                        <p class="alart-m" *ngIf="!astroURL">Sorry! Wikipedia page doesn't found. Search "{{item.name}}" on <a class="inline-link" href="https://www.google.com">Google</a></p>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
     </div>
 </div>

@@ -15,7 +15,7 @@ export class ApiService {
     return this.http.get<any>(`http://api.open-notify.org/astros.json`)
   }
 
-  getWikiData(): Observable<any> {
-    return this.http.get<any>(`https://en.wikipedia.org/w/api.php?action=opensearch&origin=*&search=nepal`)
+  getWikiPage(astroName: string): Observable<any> {
+    return this.http.get<any>(`https://en.wikipedia.org/w/api.php?action=opensearch&search=${astroName}&format=json&origin=*`)
   }
 }

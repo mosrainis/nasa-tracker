@@ -14,3 +14,7 @@ body {
     transition: all 150ms;
     color: #fff;
 }
+
+button:focus {
+    outline: none;
+}

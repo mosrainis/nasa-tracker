@@ -1,7 +1,7 @@
 <div class="wrapper">
     <app-header></app-header>
     <div class="middle-sec">
-        <div class="nav-co">
+        <div class="nav-co" [ngClass]="desktopMenu ? 'nav-open' : 'nav-close'">
             <nav class="desktop-nav">
                 <ul>
                     <li>this</li>
@@ -10,12 +10,14 @@
                 </ul>
             </nav>
         </div>
-        <main class="main-sec" [@routeAnimations]="prepareRoute(outlet)">
-            <div class="btn-co">
-                <button (click)="desktopMenu = true" class="menu-btn">Menu</button>
-            </div>
-            <router-outlet #outlet="outlet"></router-outlet>
-        </main>
+        <div class="main-content" [@routeAnimations]="prepareRoute(outlet)" [ngClass]="desktopMenu ? 'push' : 'no-push'">
+            <main class="main-sec">
+                <div class="btn-co">
+                    <button (click)="desktopMenu = !desktopMenu" class="menu-btn">Menu</button>
+                </div>
+                <router-outlet #outlet="outlet"></router-outlet>
+            </main>
+        </div>
     </div>
     <app-footer></app-footer>
 </div>

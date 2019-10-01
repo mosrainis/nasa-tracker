@@ -2,17 +2,50 @@
     width: 100%;
     height: 100%;
 
-    // .middle-sec {
-    //     display: flex;
-    //     flex-wrap: nowrap;
-    //     flex-direction: row;
-    // }
+    .middle-sec {
+        position: relative;
+        overflow-x: hidden;
+        
+        .nav-co {
+            overflow-x: hidden;
+            display: inline-block;
+            height: 100%;
+            background: #225e5e;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: width 300ms;
+        }
+
+        .nav-close {
+            width: 0;
+        }
+
+        .nav-open {
+            width: 200px;
+        }
+
+        .main-content {
+            width: 100%;
+            display: inline-block;
+            transition: margin-left 300ms;
+        }
+
+        .no-push {
+            margin-left: 0;
+        }
+
+        .push {
+            margin-left: 200px;
+        }
+    }
+
 
     .main-sec {
         width: 88%;
         max-width: 1900px;
         margin: auto;
-        min-height: 100vh;
+        min-height: 150vh;
         position: relative;
 
         .btn-co {

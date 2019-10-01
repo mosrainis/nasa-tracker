@@ -12,6 +12,10 @@ const routes: Routes = [
   {
     path: 'astronauts',
     loadChildren: () => import(`./modules/astronauts/astronauts.module`).then(m => m.AstronautsModule)
+  },
+  {
+    path: 'iss-tracker',
+    loadChildren: () => import(`./modules/iss-tracker/iss-tracker.module`).then(m => m.IssTrackerModule)
   }
 ];
 

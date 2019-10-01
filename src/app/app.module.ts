@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AstronautsModule } from "./modules/astronauts/astronauts.module";
+import { IssTrackerModule } from './modules/iss-tracker/iss-tracker.module';
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
@@ -26,7 +27,8 @@ import { FooterComponent } from './Main components/footer/footer.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    AstronautsModule
+    AstronautsModule,
+    IssTrackerModule
     
   ],
   providers: [],

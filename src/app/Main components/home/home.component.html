@@ -1,22 +1,15 @@
 <div class="item-co">
-    <div class="item">
+    <div class="item" *ngFor="let item of homeContent">
         <div class="content-co">
-            <ng-container *ngFor="let item of homeContent">
-                <a class="content-link" [routerLink]="[item.routeAddress]">
-                    <div class="image-co">
-                        <div class="content-image"></div>
-                    </div>
-                    <div class="content-info">
-                        <h2 class="content-title">{{ item.title | titlecase}}</h2>
-                        <p class="content-des">{{item.des}}</p>
-                    </div>
-                </a>
-            </ng-container>
+            <a class="content-link" [routerLink]="[item.routeAddress]">
+                <div class="image-co">
+                    <div class="content-image"></div>
+                </div>
+                <div class="content-info">
+                    <h2 class="content-title">{{ item.title | titlecase}}</h2>
+                    <p class="content-des">{{item.des}}</p>
+                </div>
+            </a>
         </div>
     </div>
-    <div class="item"></div>
-    <div class="item"></div>
-    <div class="item"></div>
-    <div class="item"></div>
-    <div class="item"></div>
 </div>

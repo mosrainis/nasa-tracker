@@ -15,10 +15,10 @@ export class AstroComponent implements OnInit {
     
   //This list helps the program to identify the right page of our astronaut :
   listOfAstroKeywords = [
-    "astronaut ",
-    "cosmonaut ",
-    "NASA ",
-    "U.S ",
+    "astronaut",
+    "cosmonaut",
+    "NASA",
+    "U.S",
     "US ",
     "space",
     "force ",
@@ -50,7 +50,7 @@ export class AstroComponent implements OnInit {
 
     this.api.getWikiPage(astroName).subscribe(result => {
       this.displayLoadingIcon = false
-  
+      
       //search for the list of words in the wikiResult[2] :
       for (const [index, value] of result[2].entries()) {
         if (this.listOfAstroKeywords.some( substr => { return value.indexOf(substr) >= 0; })) {

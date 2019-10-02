@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
+import { EventEmitter } from 'events';
+import { DataDeliveryService } from 'src/app/services/data-delivery.service';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +10,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class HomeComponent implements OnInit {
 
-  homeContent = [
+  homeContent: any = [
     {
       title: 'Astronauts currently in space',
       des: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
@@ -20,13 +22,17 @@ export class HomeComponent implements OnInit {
       routeAddress: '/iss-tracker'
     }
   ]
-  selected: boolean = false
+  selected: boolean = false  
 
   constructor(
-    private api: ApiService
-  ) { }
+    private api: ApiService,
+    private delivery: DataDeliveryService
+  ) {
+    this.sendData()
+  }
 
   ngOnInit() {
+    
   }
 
   itemSelected(item:any) {
@@ -37,6 +43,10 @@ export class HomeComponent implements OnInit {
     this.api.getAstronauts().subscribe(result => {
       console.log(result);
     })
+  }
+
+  sendData() {
+    this.delivery.modulesList.next(this.homeContent)
   }
 
 }

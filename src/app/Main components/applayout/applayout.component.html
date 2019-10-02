@@ -4,9 +4,9 @@
         <div class="nav-co" [ngClass]="desktopMenu ? 'nav-open' : 'nav-close'">
             <nav class="desktop-nav">
                 <ul>
-                    <li>this</li>
-                    <li>that</li>
-                    <li>those</li>
+                    <li class="desktop-nav-items" *ngFor="let module of modules">
+                        {{module.title}}
+                    </li>
                 </ul>
             </nav>
         </div>

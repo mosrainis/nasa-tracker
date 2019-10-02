@@ -15,6 +15,26 @@
             top: 0;
             left: 0;
             transition: width 300ms;
+
+            .desktop-nav {
+
+                ul {
+                    list-style-type: none;
+
+                    .desktop-nav-items {
+                        font-size: 14px;
+                        padding: 20px;
+                        white-space: nowrap;
+                        border-bottom: 1px solid #2f8383;
+                        transition: all 250ms;
+                        box-sizing: border-box;
+                        animation: fadein 300ms;
+                        cursor: pointer;
+                    }.desktop-nav-items:hover {
+                        background: #2f8383;
+                    }
+                }
+            }
         }
 
         .nav-close {
@@ -22,7 +42,7 @@
         }
 
         .nav-open {
-            width: 200px;
+            width: 250px;
         }
 
         .main-content {
@@ -36,7 +56,7 @@
         }
 
         .push {
-            margin-left: 200px;
+            margin-left: 250px;
         }
     }
 
@@ -97,4 +117,9 @@
             display: block;
         }
     }
+}
+
+@keyframes fadein {
+    from {display:none; opacity: 0;}
+    to {display:block; opacity: 1;}
 }

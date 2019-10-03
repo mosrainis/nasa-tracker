@@ -12,6 +12,7 @@ import { HeaderComponent } from './Main components/header/header.component';
 import { MenuComponent } from './Main components/menu/menu.component';
 import { HomeComponent } from './Main components/home/home.component';
 import { FooterComponent } from './Main components/footer/footer.component';
+import { CountdownComponent } from './Main components/countdown/countdown.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { FooterComponent } from './Main components/footer/footer.component';
     MenuComponent,
     HomeComponent,
     FooterComponent,
+    CountdownComponent,
   ],
   imports: [
     BrowserAnimationsModule,

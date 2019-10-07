@@ -3,7 +3,7 @@
         <div class="content-co">
             <a class="content-link" [routerLink]="[item.routeAddress]">
                 <div class="image-co">
-                    <div class="content-image"></div>
+                    <img class="content-image" [src]="item.pictureURL" [alt]="item.title">
                 </div>
                 <div class="content-info">
                     <h2 class="content-title">{{ item.title | titlecase}}</h2>

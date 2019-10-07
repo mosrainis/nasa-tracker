@@ -33,8 +33,7 @@ export class IssTrackerComponent implements OnInit {
 
       var gmst = satellite.gstime(new Date());
 
-      var positionEcf   = satellite.eciToEcf(positionEci, gmst),
-      positionGd    = satellite.eciToGeodetic(positionEci, gmst)
+      var positionGd    = satellite.eciToGeodetic(positionEci, gmst)
 
 
       var satelliteX = positionEci.x,

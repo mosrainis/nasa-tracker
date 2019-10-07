@@ -21,17 +21,17 @@ export class CountdownComponent implements OnInit {
   }
 
   countDown(time) {
-    let deadline = new Date("dec 31, 2021 15:20:21").getTime();
+    let deadline = new Date("july 17, 2020 23:59:00").getTime();
 
-    let x = setInterval( function() {
+    let x = setInterval( () => {
       let now = new Date().getTime();
       
       let t = deadline - now;
   
-      // this.counter.days = Math.floor(t / (1000 * 60 * 60 * 24));
-      // this.counter.hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60));
-      // this.counter.minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
-      // this.counter.seconds = Math.floor((t % (1000 * 60)) / 1000);
+      this.counter.days = Math.floor(t / (1000 * 60 * 60 * 24));
+      this.counter.hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60));
+      this.counter.minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+      this.counter.seconds = Math.floor((t % (1000 * 60)) / 1000);
     }, 1000);
 
   }

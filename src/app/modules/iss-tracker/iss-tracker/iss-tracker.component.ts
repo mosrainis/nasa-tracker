@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild, OnDestroy } from '@angular/core';
 import * as satellite from "satellite.js";
-import * as d3 from 'd3'
+import * as d3 from 'd3-geo'
 import { ApiService } from 'src/app/services/api.service';
 import { ISS } from 'src/app/models/api.model';
 import { Subscription, interval } from 'rxjs';

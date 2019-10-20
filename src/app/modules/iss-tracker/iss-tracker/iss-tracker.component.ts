@@ -12,12 +12,13 @@ import { Subscription, interval } from 'rxjs';
 })
 export class IssTrackerComponent implements OnInit, OnDestroy {
 
-  @ViewChild('canvas', {static: false}) canvas: ElementRef;
+
+  @ViewChild('canvas', {static: false}) canvas: ElementRef
   @ViewChild("earth", {static: false}) naturalEarth: ElementRef
 
   context: CanvasRenderingContext2D
   
-  canvasWidth: number = 1000
+  canvasWidth: number = 954
   ISSData: ISS[]
   groundTracks = []
   subscription: Subscription
@@ -28,38 +29,50 @@ export class IssTrackerComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getISSData()
-
-    // setTimeout(() => {
-      
-    // }, 1000);
   }
 
+  // get ISS TLEs from NASA API
   getISSData() {
     this.api.getISSTLE().subscribe(
       result => {
         this.ISSData = result
+        // calculate ground tracks
         this.pointCalculator()
       },
     )
   }
 
   pointCalculator() {
-    const numPoints = 100
-    const timeBetweenPoints = interval(200)
+    // number of points we need to draw the ground track line
+    const numberOfPoints = 5500
+    let currentTime = new Date()
+    const refreshTime = interval(1000)
+    // initilize the satellite data
     const satelliteRecord = satellite.twoline2satrec(this.ISSData["line1"], this.ISSData["line2"]);
-    this.subscription = timeBetweenPoints.subscribe(value => {
-      this.convertTLE(satelliteRecord)
-      if(this.groundTracks.length > numPoints) {
+    this.subscription = refreshTime.subscribe(value => {
+      // calculating previous ground tracks (will executed for the first time)
+      if (this.groundTracks.length === 0) {
+        for (let i = 1; i <= numberOfPoints; i++) {
+          currentTime = new Date(currentTime.getTime() + -1*1000)
+          this.convertTLE(satelliteRecord, currentTime, true)
+        }
+      }
+      currentTime = new Date()
+      this.convertTLE(satelliteRecord, currentTime, false)
+      if(this.groundTracks.length > numberOfPoints) {
         this.groundTracks.pop()
       }
       this.initProjection()
     })
   }
 
-  convertTLE(satrec) {
-      
-    const positionAndVelocity = satellite.propagate(satrec, new Date());
-
+  // convert the set of TLEs to longitude and latitude of a specific time
+  convertTLE(
+    satrec,
+    time: Date,
+    firstSet: boolean = false
+  ) {
+    let positionAndVelocity = satellite.propagate(satrec, time);
     const positionEci = positionAndVelocity.position
     const gmst = satellite.gstime(new Date());
     const positionGd = satellite.eciToGeodetic(positionEci, gmst)
@@ -69,12 +82,18 @@ export class IssTrackerComponent implements OnInit, OnDestroy {
     // altitude = positionGd.height
 
     const longitudeStr = satellite.degreesLong(longitude),
-    latitudeStr  = satellite.degreesLat(latitude);
+    latitudeStr  = satellite.degreesLat(latitude);    
 
-    this.groundTracks.unshift([longitudeStr, latitudeStr])
+    if (firstSet == true ) {
+      this.groundTracks.push([longitudeStr, latitudeStr])
+      
+    } else {
+      this.groundTracks.unshift([longitudeStr, latitudeStr])
+    }    
       
   }
 
+  //initilize the canvas
   initProjection() {    
 
     const projection = d3.geoEquirectangular()
@@ -90,37 +109,29 @@ export class IssTrackerComponent implements OnInit, OnDestroy {
     this.context.drawImage(this.naturalEarth.nativeElement, 0, 0,this.canvasWidth, this.canvasWidth/2)
 
     let line = this.groundTracks.slice()
-    const lineWidth = (this.canvasWidth / 100)    
+    const lineWidth = 1.25 + (this.canvasWidth / 1200)   
 
-    if (d3.geoDistance(line[0], line[line.length - 1]) < 0.005) {
-      this.context.strokeStyle = 'rgb(255,0,0)'
-      // this.context.lineWidth = 2 * lineWidth
+    let opacity = 1.0
+    let decay = opacity / line.length
+    this.context.lineWidth = lineWidth
 
-      this.context.beginPath()
-      path(d3.geoCircle().center(line[0]).radius(0.05)())
-      this.context.stroke()
-    } else {
-      let opacity = 1.0
-      let decay = opacity / line.length
-      this.context.lineWidth = lineWidth
+    while (line.length > 1) {
+      let start = line[0]
+      let end = line[1]
 
-      while (line.length > 1) {
-        let start = line[0]
-        let end = line[1]
+      this.context.strokeStyle = `rgba(255,0,0,${opacity}`
 
-        this.context.strokeStyle = `rgba(255,0,0,${opacity}`
-
-        let segment = {
-          type: 'LineString',
-          coordinates: [start, end]
-        }
-
-        this.context.beginPath(), path(segment), this.context.stroke()
-
-        opacity -= decay
-
-        line.shift()
+      let segment = {
+        type: 'LineString',
+        coordinates: [start, end]
       }
+
+      this.context.beginPath(), path(segment), this.context.stroke()
+
+      opacity -= decay
+
+      line.shift()
+    
     }
   }
 

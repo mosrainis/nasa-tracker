@@ -1,8 +1,8 @@
-<div class="container">
-    <div class="loading-icon" *ngIf="!astros.people">
-        <div class="loader">Loading...</div> <!-- https://codepen.io/majci23/pen/NqdXvy -->
-    </div>
-    <div class="head-content" *ngIf="astros.people">
+<div class="loading-icon" *ngIf="!astros">
+    <div class="loader">Loading...</div> <!-- https://codepen.io/majci23/pen/NqdXvy -->
+</div>
+<div class="container" *ngIf="astros">
+    <div class="head-content">
         <p>There are {{astros.number}} people in space right now.</p>
     </div>
     <div class="items-sec">
@@ -11,7 +11,7 @@
                 <h3>{{item.name}}</h3>
                 <p>Currently in {{item.craft}}</p>
                 <button class="item-btn" (click)="wikiInfo(item.name, i)">Search wikipedia about {{item.name}}</button>
-                <div class="wiki-co" [ngClass]="astros['people'][i].displayWikiSec ? 'show-loading' : 'hide-loading'">
+                <div class="wiki-co" [ngClass]="astros.people[i].displayWikiSec ? 'show-loading' : 'hide-loading'">
                     <div class="loading-icon" *ngIf="displayLoadingIcon">
                         <div class="loader">Loading...</div> <!-- https://codepen.io/majci23/pen/NqdXvy -->
                     </div>

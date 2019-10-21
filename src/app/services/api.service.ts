@@ -12,8 +12,8 @@ export class ApiService {
     private http: HttpClient
   ) { }
 
-  getAstronauts(): Observable<Astros[]> {
-    return this.http.get<Astros[]>(`http://api.open-notify.org/astros.json`)
+  getAstronauts(): Observable<Astros> {
+    return this.http.get<Astros>(`http://api.open-notify.org/astros.json`)
   }
 
   getWikiPage(astroName: string): Observable<any> {

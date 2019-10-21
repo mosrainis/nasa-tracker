@@ -9,11 +9,11 @@ import { Astros } from 'src/app/models/api.model';
 })
 export class AstroComponent implements OnInit {
 
-  astros: Astros[] = []
+  astros: Astros
   astroURL: string = ""
   displayLoadingIcon: boolean = false
     
-  //This list helps the program to identify the right page of our astronaut :
+  //This list helps the application to identify the right page of our astronaut (go to 'wikiInfo' method)
   listOfAstroKeywords = [
     "astronaut",
     "cosmonaut",

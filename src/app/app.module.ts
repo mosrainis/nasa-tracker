@@ -1,7 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AstronautsModule } from "./modules/astronauts/astronauts.module";
-import { IssTrackerModule } from './modules/iss-tracker/iss-tracker.module';
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
@@ -28,10 +26,7 @@ import { CountdownComponent } from './Main components/countdown/countdown.compon
     BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    AstronautsModule,
-    IssTrackerModule
-    
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

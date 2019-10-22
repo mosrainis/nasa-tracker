@@ -11,11 +11,11 @@ const routes: Routes = [
   },
   {
     path: 'astronauts',
-    loadChildren: './modules/astronauts/astronauts.module'
+    loadChildren: './modules/astronauts/astronauts.module#AstronautsModule'
   },
   {
     path: 'iss-tracker',
-    loadChildren: './modules/iss-tracker/iss-tracker.module'
+    loadChildren: './modules/iss-tracker/iss-tracker.module#IssTrackerModule'
   }
 ];
 

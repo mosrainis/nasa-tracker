@@ -65,13 +65,15 @@
         width: 88%;
         max-width: 1900px;
         margin: auto;
+        padding-top: 20px;
         min-height: 150vh;
         position: relative;
 
         .btn-co {
             position: absolute;
-            top: 5px;
-            left: -80px;
+            z-index: 999;
+            top: 10px;
+            left: -10px;
         }
 
         .menu-btn {

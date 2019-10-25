@@ -12,13 +12,14 @@ import { Subscription, interval } from 'rxjs';
 })
 export class IssTrackerComponent implements OnInit, OnDestroy {
 
-
   @ViewChild('canvas', {static: false}) canvas: ElementRef
   @ViewChild("earth", {static: false}) naturalEarth: ElementRef
+  @ViewChild("container", {static: false}) container: ElementRef
 
   context: CanvasRenderingContext2D
   
-  canvasWidth: number = 954
+  canvasWidth: number
+  canvasHeight: number
   ISSData: ISS[]
   groundTracks = []
   subscription: Subscription
@@ -39,6 +40,7 @@ export class IssTrackerComponent implements OnInit, OnDestroy {
         // calculate ground tracks
         this.pointCalculator()
       },
+      error => console.log(error)
     )
   }
 
@@ -50,6 +52,8 @@ export class IssTrackerComponent implements OnInit, OnDestroy {
     // initilize the satellite data
     const satelliteRecord = satellite.twoline2satrec(this.ISSData["line1"], this.ISSData["line2"]);
     this.subscription = refreshTime.subscribe(value => {
+      this.canvasWidth = this.naturalEarth.nativeElement.width
+      this.canvasHeight = this.naturalEarth.nativeElement.height
       // calculating previous ground tracks (will executed for the first time)
       if (this.groundTracks.length === 0) {
         for (let i = 1; i <= numberOfPoints; i++) {

@@ -1,4 +1,7 @@
-<div class="canvas-container">
+<div class="loading-icon" *ngIf="!canvasWidth">
+    <div class="loader">Loading...</div> <!-- https://codepen.io/majci23/pen/NqdXvy -->
+</div>
+<div class="canvas-container" #container style="width: 100%;">
     <img #earth src="assets/images/natural-earth.png" style="display: none;">
-    <canvas height="477" [width]="canvasWidth" #canvas></canvas>
+    <canvas [height]="canvasHeight" [width]="canvasWidth" #canvas style="max-width: 100%;"></canvas>
 </div>

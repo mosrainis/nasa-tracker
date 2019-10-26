@@ -2,14 +2,18 @@
 
 [LIVE DEMO](https://elegant-stallman-fa85fc.netlify.com)
 
-NasaTracker is an open-source web application that tracks Nasa activities and displays them for users.
-Asyou can see, this is just the first step and there are so much work to do but for now, we have just one tool ready to use.
+NasaTracker is an open-source web application that tracks Nasa activities and displays them to users.
+As you can see, this is just the first step and there are so much work to do but for now, we have just two tools ready to use.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.2.
 
 ### Astronauts In Space
-I'm using http://open-notify.org/ API to show the list on astronauts.
 You can watch for all astronauts that currently living in space. This basic tool also automatially gives you a wikipedia page about these astronauts. feel free to try it.
+This tool uses http://open-notify.org/ API to show the list on astronauts.
+
+### ISS Tracker
+ISS Tracker is the main module of this application. this tool displays the ground track of International Space Station (ISS) on a 2D map. It also shows the current position of the station. ISS Tracker only need internet connection at startup, so you can use it in offline mode.
+incase of developing, I'm using [Satellite.js](https://github.com/shashwatak/satellite-js) to convert the [TLE](https://en.wikipedia.org/wiki/Two-line_element_set) strings into longitude and latitude. also there is [D3-Geo](https://github.com/d3/d3-geo) library for drawing stuffs.
 
 ## Development server
 

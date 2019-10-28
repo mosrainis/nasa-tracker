@@ -1,5 +1,7 @@
+@import '../../../../../assets/scss/functions';
+
 .container {
-    margin-top: 20px;
+    margin-top: rem(20);
 }
 
 .head-content {
@@ -7,9 +9,9 @@
     margin: auto;
     background: #438685;
     color: #fff;
-    padding: 20px;
-    font-size: 25px;
-    border-radius: 8px;
+    padding: rem(20);
+    font-size: rem(25);
+    border-radius: rem(8);
     text-align: center;
 
 }
@@ -18,31 +20,31 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 30px 0px;
+    margin: rem(30) 0px;
 
     .item-container {
         width: 30%;
         background: #303852;
-        border-radius: 8px;
+        border-radius: rem(8);
         text-align: center;
-        padding: 20px;
-        margin: 10px;
+        padding: rem(20);
+        margin: rem(10);
         position: relative;
         overflow: hidden;
 
         p, h3 {
-            margin: 15px;
+            margin: rem(15);
         }
 
         .item-btn {
-            padding: 10px;
-            margin: 15px auto;
+            padding: rem(10);
+            margin: rem(15) auto;
             color: #fff;
             background: #455177;
-            border-radius: 8px;
+            border-radius:rem(8);
             width: 100%;
             border: none;
-            font-size: 16px;
+            font-size: rem(16);
             cursor: pointer;
         }.item-btn:hover {
             background: #3e414d !important;
@@ -53,8 +55,8 @@
             bottom: 0;
             left: 0;
             right: 0;
-            border-bottom-left-radius: 8px;
-            border-bottom-right-radius: 8px;
+            border-bottom-left-radius: rem(8);
+            border-bottom-right-radius: rem(8);
             background: #303852;
             margin: auto;
             transition: all 300ms;
@@ -63,28 +65,28 @@
                 position: relative;
                 width: 100%;
                 height: 100%;
-                line-height: 50px;
+                line-height: rem(50);
 
                 .item-link {
                     text-decoration: none;
-                    margin-top: 20px;
-                    padding: 8px;
-                    font-size: 20px;
-                    border-radius: 8px;
+                    margin-top: rem(20);
+                    padding: rem(8);
+                    font-size: rem(20);
+                    border-radius: rem(8);
                     background: #1f2433;
                 }.item-link:hover {
                     background: #438685;
                 }
                 
                 .alart-m {
-                    margin-top: 20px;
-                    font-size: 15px;
+                    margin-top: rem(20);
+                    font-size: rem(15);
 
                     .inline-link {
                         text-decoration: none;
                         color: #32f1ee;
-                        padding: 5px;
-                        border-radius: 8px;
+                        padding: rem(5);
+                        border-radius: rem(8);
                     }.inline-link:hover {
                         color: #fff;
                         background: #438685;
@@ -123,9 +125,9 @@
 $color-loader: #e9e9e9;
 
 .loader {
-  width: 250px;
-  height: 50px;
-  line-height: 50px;
+  width: rem(250);
+  height: rem(50);
+  line-height: rem(50);
   text-align: center;
   position: absolute;
   left: 50%;
@@ -140,8 +142,8 @@ $color-loader: #e9e9e9;
   &::before, &::after {
     content: "";
     display: block;
-    width: 15px;
-    height: 15px;
+    width: rem(15);
+    height: rem(15);
     background: $color-loader;
     position: absolute;
     animation: load .7s infinite alternate ease-in-out;
@@ -157,7 +159,7 @@ $color-loader: #e9e9e9;
 }
 
 @keyframes load {
-  0% { left: 0; height: 30px; width: 15px }
-  50% { height: 8px; width: 40px }
-  100% { left: 235px; height: 30px; width: 15px}
+  0% { left: 0; height: rem(30); width: rem(15) }
+  50% { height: rem( 8); width: rem(40) }
+  100% { left: 235px; height: rem(30); width: rem(15)}
 }

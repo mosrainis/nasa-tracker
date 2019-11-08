@@ -54,7 +54,7 @@ export class IssTrackerComponent implements OnInit, OnDestroy {
     this.subscription = refreshTime.subscribe(value => {
       this.canvasWidth = this.naturalEarth.nativeElement.width
       this.canvasHeight = this.naturalEarth.nativeElement.height
-      // calculating previous ground tracks (will executed for the first time)
+      // calculating previous ground tracks (will executed only at startup)
       if (this.groundTracks.length === 0) {
         for (let i = 1; i <= numberOfPoints; i++) {
           currentTime = new Date(currentTime.getTime() + -1*1000)
@@ -78,6 +78,11 @@ export class IssTrackerComponent implements OnInit, OnDestroy {
   ) {
     let positionAndVelocity = satellite.propagate(satrec, time);
     const positionEci = positionAndVelocity.position
+    const velocityEci = positionAndVelocity.velocity
+
+    console.log(velocityEci);
+    
+
     const gmst = satellite.gstime(new Date());
     const positionGd = satellite.eciToGeodetic(positionEci, gmst)
 
@@ -86,7 +91,7 @@ export class IssTrackerComponent implements OnInit, OnDestroy {
     // altitude = positionGd.height
 
     const longitudeStr = satellite.degreesLong(longitude),
-    latitudeStr  = satellite.degreesLat(latitude);    
+    latitudeStr  = satellite.degreesLat(latitude);
 
     if (firstSet == true ) {
       this.groundTracks.push([longitudeStr, latitudeStr])

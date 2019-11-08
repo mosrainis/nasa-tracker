@@ -102,8 +102,8 @@ export class IssTrackerComponent implements OnInit, OnDestroy {
       
   }
 
-  //initilize the canvas
-  initProjection() {    
+  //initilize the canvas projection
+  initProjection() {
 
     const projection = d3.geoEquirectangular()
       .fitSize([this.canvasWidth, this.canvasWidth/2], {type: 'Sphere'})
@@ -118,7 +118,7 @@ export class IssTrackerComponent implements OnInit, OnDestroy {
     this.context.drawImage(this.naturalEarth.nativeElement, 0, 0,this.canvasWidth, this.canvasWidth/2)
 
     let line = this.groundTracks.slice()
-    const lineWidth = 1.25 + (this.canvasWidth / 1200)   
+    const lineWidth = 1.25 + (this.canvasWidth / 600)   
 
     let opacity = 1.0
     let decay = opacity / line.length
@@ -135,7 +135,9 @@ export class IssTrackerComponent implements OnInit, OnDestroy {
         coordinates: [start, end]
       }
 
-      this.context.beginPath(), path(segment), this.context.stroke()
+      this.context.beginPath();
+      path(segment);
+      this.context.stroke();
 
       opacity -= decay
 

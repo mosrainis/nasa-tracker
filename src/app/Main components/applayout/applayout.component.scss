@@ -1,3 +1,5 @@
+@import '../../../assets/scss/functions';
+
 .wrapper {
     width: 100%;
     height: 100%;
@@ -22,10 +24,10 @@
                     list-style-type: none;
 
                     .desktop-nav-items {
-                        font-size: 14px;
-                        padding: 20px;
+                        font-size: rem(14);
+                        padding: rem(20);
                         white-space: nowrap;
-                        border-bottom: 1px solid #2f8383;
+                        border-bottom: rem(1) solid #2f8383;
                         transition: all 250ms;
                         box-sizing: border-box;
                         animation: fadein 300ms;
@@ -42,7 +44,7 @@
         }
 
         .nav-open {
-            width: 250px;
+            width: rem(250);
         }
 
         .main-content {
@@ -56,16 +58,16 @@
         }
 
         .push {
-            margin-left: 250px;
+            margin-left: rem(250);
         }
     }
 
 
     .main-sec {
         width: 88%;
-        max-width: 1900px;
+        max-width: rem(1900);
         margin: auto;
-        padding-top: 20px;
+        padding-top: rem(20);
         min-height: 150vh;
         position: relative;
 
@@ -78,21 +80,21 @@
 
         .menu-btn {
             position: relative;
-            width: 100px;
-            height: 40px;
+            width: rem(100);
+            height: rem(40);
             background: #438685;
             border: none;
-            border-radius: 8px;
+            border-radius: rem(8);
             cursor: pointer;
             overflow: hidden;
         } .menu-btn:hover {
             background: #3b7574;
-            font-size: 17px;
+            font-size: rem(17);
         } .menu-btn::after {
             content: '=';
             color: #438685;
-            line-height: 40px;
-            width: 10px;
+            line-height: rem(40);
+            width: rem(10);
             background: #254747;
             position: absolute;
             top: 0;

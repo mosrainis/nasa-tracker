@@ -15,6 +15,7 @@ export class IssTrackerComponent implements OnInit, OnDestroy {
   @ViewChild('canvas', {static: false}) canvas: ElementRef
   @ViewChild("earth", {static: false}) naturalEarth: ElementRef
   @ViewChild("container", {static: false}) container: ElementRef
+  @ViewChild("circle", {static: false}) circle: ElementRef
 
   context: CanvasRenderingContext2D
   
@@ -51,6 +52,7 @@ export class IssTrackerComponent implements OnInit, OnDestroy {
     const refreshTime = interval(1000)
     // initilize the satellite data
     const satelliteRecord = satellite.twoline2satrec(this.ISSData["line1"], this.ISSData["line2"]);
+    
     this.subscription = refreshTime.subscribe(value => {
       this.canvasWidth = this.naturalEarth.nativeElement.width
       this.canvasHeight = this.naturalEarth.nativeElement.height
@@ -79,10 +81,8 @@ export class IssTrackerComponent implements OnInit, OnDestroy {
     let positionAndVelocity = satellite.propagate(satrec, time);
     const positionEci = positionAndVelocity.position
     const velocityEci = positionAndVelocity.velocity
-
-    console.log(velocityEci);
+    // console.log(velocityEci);
     
-
     const gmst = satellite.gstime(new Date());
     const positionGd = satellite.eciToGeodetic(positionEci, gmst)
 
@@ -104,6 +104,7 @@ export class IssTrackerComponent implements OnInit, OnDestroy {
 
   //initilize the canvas projection
   initProjection() {
+    
 
     const projection = d3.geoEquirectangular()
       .fitSize([this.canvasWidth, this.canvasWidth/2], {type: 'Sphere'})
@@ -124,20 +125,39 @@ export class IssTrackerComponent implements OnInit, OnDestroy {
     let decay = opacity / line.length
     this.context.lineWidth = lineWidth
 
+    // console.log(this.groundTracks[0][0], " = " ,line[0][0]);
+    // console.log(line[0][1]);
+
+    let arcSegment = projection([line[0][0], line[0][1]])
+
+
+    this.context.beginPath();
+    path(arcSegment)
+    this.context.arc(arcSegment[0], arcSegment[1], 30, 0,2 * Math.PI, false);
+    this.context.strokeStyle = "green"
+    this.context.stroke();
+    this.context.closePath()
+
+
     while (line.length > 1) {
       let start = line[0]
       let end = line[1]
-
+      
       this.context.strokeStyle = `rgba(255,0,0,${opacity}`
 
-      let segment = {
+      // console.log(line[0][1]);
+            
+      
+
+      let LineSegment = {
         type: 'LineString',
         coordinates: [start, end]
       }
 
       this.context.beginPath();
-      path(segment);
+      path(LineSegment);
       this.context.stroke();
+      this.context.closePath();
 
       opacity -= decay
 
@@ -147,7 +167,9 @@ export class IssTrackerComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe()
+    if(this.subscription) {
+      this.subscription.unsubscribe()
+    }
   }
 
 }

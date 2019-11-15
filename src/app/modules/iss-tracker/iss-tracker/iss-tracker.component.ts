@@ -14,6 +14,7 @@ export class IssTrackerComponent implements OnInit, OnDestroy {
 
   @ViewChild('canvas', {static: false}) canvas: ElementRef
   @ViewChild("earth", {static: false}) naturalEarth: ElementRef
+  @ViewChild("iss", {static: false}) iss: ElementRef
   @ViewChild("container", {static: false}) container: ElementRef
   @ViewChild("circle", {static: false}) circle: ElementRef
 
@@ -114,7 +115,7 @@ export class IssTrackerComponent implements OnInit, OnDestroy {
 
     const path = d3.geoPath()
       .projection(projection)
-      .context(this.context);      
+      .context(this.context)
 
     this.context.drawImage(this.naturalEarth.nativeElement, 0, 0,this.canvasWidth, this.canvasWidth/2)
 
@@ -129,15 +130,6 @@ export class IssTrackerComponent implements OnInit, OnDestroy {
     // console.log(line[0][1]);
 
     let arcSegment = projection([line[0][0], line[0][1]])
-
-
-    this.context.beginPath();
-    path(arcSegment)
-    this.context.arc(arcSegment[0], arcSegment[1], 30, 0,2 * Math.PI, false);
-    this.context.strokeStyle = "green"
-    this.context.stroke();
-    this.context.closePath()
-
 
     while (line.length > 1) {
       let start = line[0]
@@ -164,6 +156,19 @@ export class IssTrackerComponent implements OnInit, OnDestroy {
       line.shift()
     
     }
+
+    this.context.beginPath();
+    // this.context.arc(arcSegment[0], arcSegment[1], 30, 0,2 * Math.PI, false);
+    // this.context.strokeStyle = "green"
+    // this.context.stroke();
+    this.context.drawImage(
+      this.iss.nativeElement,
+      arcSegment[0]-this.iss.nativeElement.width/4,
+      arcSegment[1]-this.iss.nativeElement.height/4,
+      this.iss.nativeElement.width/2,
+      this.iss.nativeElement.height/2
+    )
+    this.context.closePath()
   }
 
   ngOnDestroy() {

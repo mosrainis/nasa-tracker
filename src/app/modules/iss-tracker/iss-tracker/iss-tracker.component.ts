@@ -48,9 +48,9 @@ export class IssTrackerComponent implements OnInit, OnDestroy {
 
   pointCalculator() {
     // number of points we need to draw the ground track line
-    const numberOfPoints = 5500
+    const numberOfPoints = 2500
     let currentTime = new Date()
-    const refreshTime = interval(1000)
+    const refreshTime = interval(2000)
     // initilize the satellite data
     const satelliteRecord = satellite.twoline2satrec(this.ISSData["line1"], this.ISSData["line2"]);
     
@@ -60,7 +60,7 @@ export class IssTrackerComponent implements OnInit, OnDestroy {
       // calculating previous ground tracks (will executed only at startup)
       if (this.groundTracks.length === 0) {
         for (let i = 1; i <= numberOfPoints; i++) {
-          currentTime = new Date(currentTime.getTime() + -1*1000)
+          currentTime = new Date(currentTime.getTime() + -1*2000)
           this.convertTLE(satelliteRecord, currentTime, true)
         }
       }
@@ -94,11 +94,12 @@ export class IssTrackerComponent implements OnInit, OnDestroy {
     const longitudeStr = satellite.degreesLong(longitude),
     latitudeStr  = satellite.degreesLat(latitude);
 
-    if (firstSet == true ) {
+    if (firstSet === true ) {
       this.groundTracks.push([longitudeStr, latitudeStr])
       
     } else {
       this.groundTracks.unshift([longitudeStr, latitudeStr])
+      this.groundTracks.pop()
     }    
       
   }
